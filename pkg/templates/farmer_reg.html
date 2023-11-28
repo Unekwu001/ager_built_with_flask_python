@@ -1,0 +1,63 @@
+{% extends 'fo_dashboard.html'%}
+{%set m = get_flashed_messages()%}
+
+{% block content %}
+<form method="post" action="{{url_for('regfarmers')}}" >
+	<input type="text" name="firstname" placeholder="enter farmer's first name" class="form-control-sm" required="required">
+	<input type="text" name="surname" placeholder="enter farmer's surname name" class="form-control-sm"required="required" >
+	<input type="text" name="othernames" placeholder="other names" class="form-control-sm" required="required">
+	<input type="text" name="phonenumber" placeholder="enter farmer's phone number" class="form-control-sm"required="required" >
+	<select name="gender"class="form-control-sm" required="required">
+		<option value="">select gender</option>
+		<option value="male">male</option>
+		<option value="female">female</option>
+	</select>
+	<select name="role" class="form-control-sm"required="required">
+			<option value="">Select farmer's role within the trust group</option>
+			<option value="leader">Leader</option>
+			<option value="secretary">Secretary</option>
+			<option value="member">Member</option>
+	</select>
+	<input type="textarea" name="address" placeholder="enter farmer's address" class="form-control-sm" required="required">
+	<select name="state" class="form-control-sm"required="required">
+		<option value="">enter farmer's state</option>
+		<option value="Kaduna">Kaduna</option>
+	</select>
+	<select name="lga" class="form-control-sm"required="required">
+		<option value="">enter farmer's lga</option>
+		<option value="Anchau">Anchau</option>
+	</select>
+	<select name="village"class="form-control-sm" required="required">
+		<option value="">enter farmer's village</option>
+		<option value="furana">furana</option>
+	</select>
+	<select name="officerid" class="form-control-sm"required="required">
+		<option value="">Select a field officer</option>
+		<option value="{{data.fo_id}}">{{data.fo_fname}} {{data.fo_surname}} {{data.fo_lname}}</option>
+	</select>
+	<input type="number" name="farmsize" placeholder="enter farm size in hectares" class="form-control-sm" required="required">
+	<select name="tg" class="form-control-sm"required="required">
+		<option value="">Enter trust group name</option>
+		<option value="kowa">kowa</option>
+	</select>
+	<select name="verifstatus" class="form-control-sm" required="required">
+		<option value="">Has the farmer been verified</option>
+		<option value="yes">yes</option>
+		<option value="no">no</option>
+	</select>
+	<select name="contract"class="form-control-sm" required="required">
+		<option value="">Has the farmer agreed to contract</option>
+		<option value="yes">yes</option>
+		<option value="no">no</option>
+	</select>
+	<select name="croptype"class="form-control-sm" required="required">
+		<option value="">farmer crop</option>
+		<option value="rice">rice</option>
+		<option value="maize">maize</option>
+		<option value="wheat">wheat</option>
+	</select>
+	<input type="reset" value="RESET"class="form-control-sm mt-4" style="width:10%;margin-left:28vw;border-radius:10px;color:white;background-color:black;border-color:orange">
+	<input type="submit" value="SUBMIT"class="form-control-sm mt-4" style="width:10%;border-radius:10px;color:white;background-color:black;border-color:orange;" >
+
+</form>
+{% endblock content %}

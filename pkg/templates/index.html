@@ -1,0 +1,418 @@
+{% set m =  get_flashed_messages()%}
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>AGER - Home</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<link href="/static/bootstrap/css/bootstrap.css" rel="stylesheet">
+		<link rel="stylesheet" href="/static/bootstrap/animate.min.css">
+		<style type=text/css>
+			
+			#menuro{background-color:rgb(190,190,190)}
+			#menucol1 li{border-color:green;display:inline-block;justify-content:center; margin:1vw;font-family:"Amita";border-radius:20px;padding:2%}
+                        #menucol1 li a{color:white;}
+                        #menucol1 li a:hover{color:black;border-bottom-color: aqua;}
+                        #menucol1:hover{background-color: rgb(236, 226, 206);border-radius:10px}
+                        #menucol2 li{display:inline-block;justify-content:center; margin:1vw;font-family:"Amita";border:1px solid orange;border-radius:20px;padding:2%}
+			#stickyy{position:sticky;top:0px;}
+			#banner{background-image:url("/static/images/tg.png");background-color:white;background-size:cover;background-repeat:no-repeat;background-position:top;background-attachment:fixed;height:60vh}
+			#overlay{height:inherit;width:inherit;background-color:rgb(0,0,0,0.6);padding-top:15vh;}
+			#banner2{background-image:url("/static/images/cru.jpg");height:120vh;background-size:cover;background-color:green;background-repeat:no-repeat;background-position:top;background-attachment:fixed;margin-top:25vh}
+                        #overlay_brands ul li{display:inline-block;margin:2%}
+                
+	                @font-face{font-family:"Amita";src:url('/static/fonts/Amita-Regular.woff')}
+                        @font-face{font-family:"Ubuntu";src:url('/static/fonts/Ubuntu-Regular.ttf')}
+                        #overlay1{height:inherit;width:inherit;background-color:rgb(0,0,0,0.0);margin-top:-10vh}
+ 			#writeOnbanner{margin-left:3vw;margin-top:50vh;text-align:center;font-family: Amita;}
+			a{text-decoration:none;color:black}
+			.firstrow{background-color:black}
+			form{padding:5%;background-color:grey;border-radius:20px;text-align:center;margin-top:10%;margin-left:15%;margin-right:15%}
+			#inner_whyager{background-color:rgb(245,245,245);color:black;padding:3%;text-align:center;
+			border-radius:20px;font-size:larger;margin-top:35vh;}
+			/* #signin{margin-top:15vh;margin-left:20vw;border-radius:10px;background-color:rgb(80,80,80);color:white;} */
+			#registerform select,#registerform input{margin-bottom:2vh}
+			.menu{background-color:rgb(100, 100, 98)}
+                        #model_list div{padding-top:10vh;margin-top:5vh;background-color:rgb(250, 250, 250);}
+                        #registerform{margin-top:15vh;}
+                        #loginform{margin-top:15vh;}
+                        @media all and (max-width:950px){
+                                #mainlogo{display:none}
+                        }
+
+		</style>
+                <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+	</head>
+
+	<body>
+		<div class="container-fluid"id="stickyy" >
+		
+			<div class="row">
+				<div class="col-lg-5 menu ">
+					<ul id="menucol1">
+                                                <li><a href="{{url_for('reg')}}">Home</a></li>
+						<li><a href="#inner_whyager">Why Ager ?</a></li>
+						<li><a href="#model_list">Model</a></li>
+						<li><a href="#overlay_brands">Contact us</a></li>
+
+                                        </ul>
+				</div>
+				<div class="col-lg-1 menu" id="menulogo">
+					<img src="/static/images/ager.png" alt="ager logo" class=" animate__animated animate__bounce animate__repeat-3"style="margin-top:5vh;margin-right:10px;width:3vw" id="mainlogo">
+				</div>
+				<div class="col-lg-6 menu">
+                                        <!--menu bar-->
+                                                <ul id="menucol2">
+                                                        <li><a style="color:white" href="#banner2" id="register" ><span>Register as a field officer</span></a></li>
+                                                        <li style="background-color:orange"><a style="color:black" href="#banner2" id="login">Login</a></li>
+                                                
+                                                </ul>
+                                        </div>
+			</div>
+		</div>
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-md-12 mb-4"id="banner">
+                                        <div id="overlay1">
+					        <div class="col-md" id="writeOnbanner">
+                                                        <h3 style="font-family:Amita;color:rgb(248, 248, 247);">ONBOARD A FARMER TODAY!</h3>
+                                                        {%for i in m%}
+                                                        <h4 style="color:orange;background-color:black;border-radius:20px">{{i}}</h4>
+                                                        {%endfor%}
+                                                </div>
+                                        </div>
+                                        
+				</div>
+                       
+                        </div>
+				<div class="col-md" id="banner2">
+				<div id="overlay">
+                                        
+					<!-- <div class="col-lg-6"id="signin" >
+                                                <div col-md-12>
+                                                <input type="radio" id="registerbtn" name="regandlog"> Sign up
+                                                <input type="radio" id="loginbtn" name="regandlog"> Already have an account
+                                                </div>
+                                        </div>                   -->
+					<!--login starts here-->
+					 <div class="col-lg-12 " id="loginform" >
+						 <form method="POST" action="{{url_for('login')}}">
+                                                        <div class="col-lg">
+                                                                <h2 style="color:white">Login</h2>
+                                                                <hr style="height:3vh">
+                                                                <h4 style="color:white">Welcome Back !</h4>
+                                                        </div>
+
+                                                        <input type="email" name="email" class="form-control" 
+							placeholder="Enter email" required="required">
+
+					                <select name="role" class="form-control mt-2" required="required" >
+                                                                <option value="2">Field officer</option>
+                                                        </select>
+                                                        <input type="password" name="password" class="form-control mt-2" placeholder=
+                                                                              "Enter your password " id="pwdinput" required="required">
+                                                        <button id="showpwd" type="button" class="form-control-sm mt-2" style="border-radius:10px;background-color:rgb(137, 173, 95);color:white;"
+                                                                onclick="
+                                                                x = document.getElementById('pwdinput')
+                                                                if(x.type == 'password')
+                                                                {
+                                                                        x.type = 'text'
+                                                                        this.innerHTML = 'hide password'
+                                                                }
+                                                                else
+                                                                {
+                                                                        x.type = 'password'
+                                                                        this.innerHTML = 'show password'
+                                                                }
+                                                                ">show password</button>
+                                                        <div class="col-lg mt-5">
+                                                                <input style="background-color:green;border-radius:20px;color:white" type="reset" name="reset">
+                                                                <input style="background-color:orange;border-radius:20px;margin-left:2vw"type="submit" name="submit">
+                                                        </div>
+
+                                                </form>
+					 </div><!--login ends-------------->
+
+					 <!-----register starts----------------->
+					 <div id="registerform"class="col-lg-12">
+                                                <form method="POST" action="{{url_for('reg')}}">
+                                                        <div class="col-lg" style="color:white">
+                                                                <h3 id="celebrate">Register</h3>
+                                                                <!-- <hr style="height:2vh"> -->
+                                                                <h6 style="color:orange">Please note: You should be 18 years and above to Register. Thankyou!</h6>
+                                                        </div>
+
+                                                <div class="reg" id="show1st"><!--show 1st starts-->
+
+                                                                <!-- <input type="text" name="firstname" class="form-control"placeholder="first name" required="required">
+
+                                                                <input type="text" name="surname" class="form-control"placeholder="surname" required="required"> -->
+                                                                <input type="text" name="firstname" class="form-control"
+                                                                        placeholder="first name" required="required">
+
+                                                                <input type="text" name="othername" class="form-control"
+                                                                        placeholder="other names" required="required">
+
+                                                                <input type="text" name="surname" class="form-control"
+                                                                        placeholder="surname" required="required">
+
+                                                                <input type="text" name="phonenumbers" class="form-control"placeholder="phone number" required="required">
+
+                                                                <input type="email" name="emails" class="form-control"placeholder="email"required="required">
+
+                                                        <button style="background-color:orange;border-radius:20px;"type="button" 
+									id="next1">Next</button>
+                                                </div><!--show first ends-->
+
+                                                <div class="reg" id="show2nd"><!--show 2nd starts-->
+
+                                                                <select name="gender" class="form-control" required="required">
+                                                                        <option value=""> Select your gender</option>
+                                                                        <option value="Male">Male</option>
+                                                                        <option value="Female">Female</option>
+                                                                </select>
+
+                                                                <select name="state"type="text" class="form-control" required="required" id="statess">
+                                                                        <option value="">Select your state</option>
+                                                                        {% for k in states %}
+                                                                        <option value="{{k.state_id}}">{{k.state_name}}</option>
+                                                                        {% endfor %}
+                                                                </select>
+
+                                                                <select name="lga" class="form-control"required="required" id="lgao">
+                                                                        
+                                                                </select>
+
+
+                                                                <input name="village" class="form-control" required="required" placeholder="Enter your village name">
+                                                                        
+
+                                                                <input type="password" name="password" class="form-control" placeholder=
+                                                                             "Enter your password " required="required" id="fpwd">
+
+                                                                <input type="password" name="confirmpassword" class="form-control"
+                                                                placeholder="Confirm password" required="required" id="spwd">
+
+                                                        <button style="background-color:orange;border-radius:20px;"type="button" id="back2">Back</button>
+                                                        <button style="background-color:rgb(12, 231, 12);color:black;border-radius:20px;"
+								type="button" id="next2">Next</button>
+                                                        </div><!--show 2nd ends-->
+
+                                                <div  class="reg"id="show3rd"><!--show 3rd-->
+                                                                <select name="edqualify" class="form-control" required="required">
+                                                                        <option value="">Highest Educational Qualification</option>
+                                                                        <option value="MSc/MBA/MPhil or equivalent">MSc/MBA/MPhil or equivalent</option>
+                                                                        <option value="BSc/HND/B.A or equivalent">BSc/HND/B.A or equivalent</option>
+                                                                        <option value="NCE/OND or equivalent">NCE/OND or equivalent</option>
+                                                                        <option value="SSCE or equivalent">SSCE or equivalent</option>
+                                                                        <option value="Primary School leaving certificate">Primary School leaving certificate</option>
+                                                                </select>
+
+
+                                                                <input name="homeaddress" type="text"placeholder="Home address"
+                                                                class="form-control" required="required">
+
+                                                                <input name="guarantorname" type="text"
+                                                                              placeholder="Guarantor's full name" class="form-control" required="required">
+
+                                                                <input name="guarantorphone" type="text"
+                                                                              placeholder="guarantor's phone number" class="form-control" required="required">
+
+                                                                <input name="guarantoraddress" type="text"
+                                                                             placeholder="guarantor's address" class="form-control" required="required">
+
+                                                                <button style="background-color:orange;border-radius:20px;margin-left:2vw" type="button" id="back3">Back</button>
+                                                                <input style="background-color:orange;border-radius:20px;"
+									type="reset" name="reset">
+                                                                <input type="submit" name="submit" style="background-color:
+									rgb(11, 241, 11);color:black;border-radius:20px;margin-left:2vw" onclick="
+                                                                                function chkpwd(e)
+                                                                                {
+                                                                                        var fpwd = document.getElementById('fpwd')
+                                                                                        var spwd = document.getElementById('spwd')
+                                                                                        
+                                                                                        if(fpwd.value != spwd.value)                                                        
+                                                                                        {
+                                                                                                Swal.fire('please make sure both passwords match')
+                                                                                                e.preventDefault();
+                                                                                        }
+                                                                                        else
+                                                                                        {
+                                                                                                Swal.fire('good to go ?')
+                                                                                        }
+                                                                                }
+                                                                                chkpwd(event)
+                                                                        " ><br>
+                                                </div><!--show 3rd ends-->
+
+                                                </form>
+                                        </div> <!---register ends-->
+                                </div><!--overlay ends-->
+			</div><!--banner2 ends-->
+                        
+				<div id="whyager" class="col-md-12 mt-4">
+			
+					<div class="col-12" id="inner_whyager">
+                                                <img  class="img-fluid"src="/static/images/goy.png" height="200vh" width="200vw">
+                                                <h2>Why Ager ?</h2>
+						<p>Ager is a co-operative based contract farming platform. It is aimed at solving the problem of lack of farmer visibility by creating a platform
+                                                where farmers can be onboarded irrespective of their locations around Nigeria inorder to 
+						easily receive the necessary credit/input. According to 
+						the Food and  Agricultural Organisation of the United Nations, Nigeria has 70.8 million 
+						hectares of agriculture land area with maize, cassava, guinea
+                                                corn, yam beans, millet and rice being the major crops. Inspite of this, only
+                                                57 percent of the 6.7 million metric tons of these crops are consumed in Nigeria annually is
+                                                locally produced leading to a deficit of about 3 million metric tons, which is either
+                                                imported or smuggled into the country illegally.This problem has been partly attributed to a
+                                                lack of adequate agricultural inputs in the right quality and quantity and lack of farmer
+                                                visibility.</p>             
+					</div>
+				</div>
+			
+
+		</div>
+                <div class="container"><!-----model-->
+                        
+                        <div class="row" id="model_list" style="text-align:center;margin-bottom:20vh">
+                                        <h2 style="margin-top:30vh">Our Model</h2>
+                                <div class="col-3">
+                                        <img src="/static/images/famzy.png" class="img-fluid"height="20vh" width="200vw"> 
+                                        <p style="margin-top:2vh;">field officer onboards a farmer onto the ager platform</p>  
+                                </div>
+                                <div class="col-3">
+                                        <img src="/static/images/tg.png" class="img-fluid"> 
+                                        <p style="margin-top:2vh">farmer goes to form a trust group</p>
+                                </div>
+                                <div class="col-3 ">
+                                        <img src="/static/images/carry.png" class="img-fluid"height="200vh" width="200vw">
+                                        <p style="margin-top:2vh">farmer is given loans in the form of inputs(fertilizer, seed etc)</p>
+                                </div>
+                                <div class="col-3">
+                                        <img src="/static/images/farm.png" class="img-fluid"height="200vh" width="200vw">
+                                        <p style="margin-top:2vh">farmer applies inputs to his/her farm</p>
+                                </div>
+                                
+                                <div class="col-3 offset-3">
+                                        <img src="/static/images/famzy.png" class="img-fluid"height=200vh" width="200vw"> 
+                                        <p style="margin-top:2vh">field officer monitors farmer's fields</hp>
+                                </div>
+                                <div class="col-3 ">
+                                        <img src="/static/images/new3.png" class="img-fluid"height="200vh" width="200vw"> 
+                                        <p style="margin-top:2vh">Farmer harvest his produce, and repays his loan with 20% of his harvest.</p>
+                                </div>
+                        </div>
+                        
+                </div>
+                <div class="container-fluid">
+                        <div class="row">
+                                <div id="overlay_brands" class= "col-lg mt-4"style="text-align:center;background-color:black;margin-top:10vh">
+                                        <h2 style="color:white;margin-top:10vh">Contact</h2>
+
+                                        <div id="trademark" style="color:white">
+                                                <p>Ager is currently being built by Unekwuojo Theophilus Shaibu</p>
+                                                <p>No 35 Bello Street,ketu Ikosi, Lagos,Nigeria.</p>
+                                                
+                                        </div>
+                                        <div id="contact"style="color:white">
+                                                <p> &copy; 2022 Copyrights</p>
+                                                <p>Currently in search of partnerships for this project</p>
+                                        </div>
+                                        <ul>
+                                                <li><a href="https://www.linkedin.com/in/unekwuojo-shaibu-4148b01ba/"target="_blank">
+                                                        <img class="animate__animated animate__pulse animate__repeat-3 " 
+                                                        src="/static/images/linkedin.png"height="80vh" width="80vw"></a></li>
+                                                <li><a href="https://web.facebook.com/ProfessorTheophilus" target="_blank">
+                                                        <img class="animate__animated animate__pulse animate__repeat-3 " 
+                                                        src="/static/images/facebook.png"height="80vh" width="80vw"color="blue"></a></li>
+                                                <li><a href="https://www.instagram.com/teeyo_360/" target="_blank"><img 
+                                                       class="animate__animated animate__pulse animate__repeat-3 " 
+                                                    src="/static/images/insta.png"height="80vh" width="80vw"></a></li>
+                                                <li><a href="https://twitter.com/teeyo360" target="_blank"><img 
+                                                        class="animate__animated animate__pulse animate__repeat-3 " 
+                                                        src="/static/images/twitter.png"height="80vh" width="80vw"></a></li>
+                                                <li><a href="https://wa.link/hi74nq" target="_blank"><img 
+                                                             class="animate__animated animate__pulse animate__repeat-3 "
+                                                        src="/static/images/whatsapp1.png"height="80vh" width="80vw"></a></li>
+                                        </ul>	
+                                </div>
+                        
+                        </div>
+                </div>
+        </div>
+
+                        
+                        </div>
+                </div>
+	<script src="/static/jquery/jquery.min.js"></script>
+        
+	<script type="text/javascript" language="javascript" >
+
+
+
+
+                                                $('#registerbtn').prop('checked',true)
+                                                $('#registerform').show()
+						$('#loginform').hide()
+						$('#show2nd').hide()
+						$('#show3rd').hide()
+						
+						$('#next1').click(function(){
+									$('#show2nd').show(500)
+									$('#show1st').hide(500)
+									  })
+						$('#next2').click(function(){
+									$('#show3rd').show(500)
+									$('#show2nd').hide(500)	
+							           	  })
+						$('#back3').click(function(){
+									$('#show2nd').show(500)
+									$('#show3rd').hide(500)
+
+									})
+						$('#back2').click(function(){
+									$('#show1st').show(500)
+									$('#show2nd').hide(500)
+									})
+                                                $('#loginbtn').click(function(){
+                                                                                $('#loginform').show(500)
+										$('#registerform').hide(500)
+                                                                                })
+                                                $('#registerbtn').click(function(){
+                                                                                $('#registerform').show(500)
+                                                                                $('#loginform').hide(500)
+                                              					})
+						$('#login').click(function(){
+									$('#loginbtn').prop('checked',true)
+									$('#loginform').show(500)
+									$('#registerform').hide(500)
+										})
+						$('#register').click(function(){
+                                                                        $('#registerbtn').prop('checked',true)
+                                                                        $('#registerform').show(500)
+                                                                        $('#loginform').hide(500)
+
+                                                                                })
+                $(document).ready(function(){
+                        $('#statess').change(function(){
+                                var selected = $(this).val()
+                                var data2send = {'statee':selected}
+                                
+                                $.ajax({
+                                        url:"{{url_for('getlga')}}",
+                                        type:'get',
+                                        data:data2send,
+                                        dataType:'text',
+                                        success:function(msg){$('#lgao').html(msg)},
+                                        error:function(err){ console.log(err)}
+                                        // beforeSend(){ $('button').html('please wait')}
+                                })
+                        
+
+                         
+                        })
+                })
+                                
+        </script>
+	</body>
+</html>
+

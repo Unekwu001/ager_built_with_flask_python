@@ -1,0 +1,48 @@
+{% extends 'fo_dashboard.html' %}
+{% block content %}
+{{famadata}}
+<div class="col-md-12 mt-4" id="myfarmers">
+    <ul>
+        <li><input type="search" name="searchfarmer"placeholder="find farmers by..."class="form-control-sm"style="height:5vh"></li>
+        <li><input type="button" name="getallfarmers"class="btn btn-success form-control-sm" value="Get all farmers"style="color:orange;background-color:black;border-color:orange;height:1vh;width:10vw;margin-left:1vw"></li>
+    </ul>
+</div>
+<div class="farmerstable">
+
+    <table class="table table_stripped"style="color:black;background-color:white">
+        
+        <tr>
+            <th>S/N</th>
+            <th>farmer id</th>
+            <th>Trust group</th>
+            <th>first name</th>
+            <th>surname</th>
+            <th>other names</th>
+            <th>state</th>
+            <th>lga</th>
+            <th>village</th>
+            <th>crop type</th>
+            <th>farm size(ha)</th>
+            <th>contract signed</th>
+        </tr>
+        {% for i in famadata %}
+        <tr> 
+            <td><a style="color:black" href="{{url_for('seefarmerprofile')}}">{{loop.index}}</a></td>
+            <td><a style="color:black"  href="{{url_for('seefarmerprofile')}}">{{i.fam_id}}</a></td>
+            <td><a style="color:black"  href="{{url_for('seefarmerprofile')}}">{{i.fama_tg}}</a></td>
+            <td><a style="color:black"  href="{{url_for('seefarmerprofile')}}">{{i.fam_fname}}</a></td>
+            <td><a style="color:black"  href="{{url_for('seefarmerprofile')}}">{{i.fam_surname}}</a></td>
+            <td><a style="color:black"  href="{{url_for('seefarmerprofile')}}">{{i.fam_lname}}</a></td>
+            <td><a style="color:black"  href="{{url_for('seefarmerprofile')}}">{{i.fama_state}}</a></td>
+            <td><a style="color:black"  href="{{url_for('seefarmerprofile')}}">{{i.fama_lga}}</a></td>
+            <td><a style="color:black"  href="{{url_for('seefarmerprofile')}}">{{i.fama_village}}</a></td>
+            <td><a style="color:black"  href="{{url_for('seefarmerprofile')}}">{{i.fama_crop}}</a></td>
+            <td><a style="color:black"  href="{{url_for('seefarmerprofile')}}">{{i.farm_size}}</a></td>
+            <td><a style="color:black"  href="{{url_for('seefarmerprofile')}}">{{i.con_agreement}}</a></td>
+
+        </tr>
+        {% endfor %}
+        
+    </table>
+</div>
+{% endblock content %}

@@ -1,0 +1,219 @@
+{%set m = get_flashed_messages()%}
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>AGER - Home</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<link href="/static/bootstrap/css/bootstrap.css" rel="stylesheet">
+		<link rel="stylesheet" href="/static/bootstrap/animate.min.css">
+		<style type=text/css>
+			
+			#menuro{background-color:rgb(190,190,190)}
+			#menucol1 li{border-color:green;display:inline-block;justify-content:center; margin:1vw;font-family:"Amita";border-radius:20px;padding:2%}
+                        #menucol1 li a{color:white;}
+                        #menucol1 li a:hover{color:black;border-bottom-color: aqua;}
+                
+                        #menucol2 li{display:inline-block;justify-content:center; margin:1vw;font-family:"Amita";border:1px solid orange;border-radius:20px;padding:2%}
+			#stickyy{position:sticky;top:0px;}
+ 			#overlay{height:inherit;width:inherit;background-color:rgb(0,0,0,0.6);padding-top:15vh;}
+			#banner2{background-image:url("/static/images/cru.jpg");height:120vh;background-size:cover;background-color:green;background-repeat:no-repeat;background-position:top;background-attachment:fixed}
+                        #overlay_brands ul li{display:inline-block;margin:2%}
+                
+	                @font-face{font-family:"Amita";src:url('/static/fonts/Amita-Regular.woff')}
+                        @font-face{font-family:"Ubuntu";src:url('/static/fonts/Ubuntu-Regular.ttf')}
+                        #overlay1{height:inherit;width:inherit;background-color:rgba(0, 0, 0, 0.822);margin-top:-10vh}
+ 			#writeOnbanner{margin-left:3vw;margin-top:50vh;text-align:center;font-family: Amita;}
+			a{text-decoration:none;color:black}
+			.firstrow{background-color:black}
+			form{padding:5%;background-color:grey;border-radius:20px;text-align:center;margin-top:10%;margin-left:15%;margin-right:15%}
+			#inner_whyager{background-color:rgb(245,245,245);color:black;padding:3%;text-align:center;
+			border-radius:20px;font-size:larger;margin-top:35vh;}
+			#registerform{margin-top:-20vh}	
+			#loginform{margin-top:-20vh}
+			/* #signin{margin-top:15vh;margin-left:20vw;border-radius:10px;background-color:rgb(80,80,80);color:white;} */
+			#registerform select,#registerform input{margin-bottom:2vh}
+			.menu{background-color:rgb(100, 100, 98)}
+                        #model_list div{padding-top:10vh;margin-top:5vh;background-color:rgb(250, 250, 250);}
+                        @media all and (max-width:950px){
+                                #menulogo{display:none}
+                        }
+
+		</style>
+	</head>
+	<body>
+		<div class="container-fluid"id="stickyy" >
+		
+			<div class="row">
+				<div class="col-lg-3 menu ">
+					<ul id="menucol1">
+                                        
+						<li><a href="{{url_for('fo_dashboard')}}">My Dashboard</a></li>
+
+                                        </ul>
+                                        
+				</div>
+
+				<div class="col-lg-3 menu" id="menulogo">
+					<img src="/static/images/ager.png" alt="ager logo" class=" animate__animated animate__bounce animate__repeat-3"style="margin-top:5vh;margin-right:10px;width:3vw">
+				</div>
+                                <div class="col-lg-4 menu" style="text-align:center">
+                                        <a href="{{url_for('update_settings')}}"><button style="margin-top:3vh">Edit Profile</button></a>
+                                        <a href="{{url_for('profile')}}"><button >Show profile</button></a>
+                                </div>
+				 <div class="col-lg-2 menu">
+                                        <ul id="menucol2">
+                                        <li style="background-color:orange"><a style="color:black" href="{{url_for('logout')}}" id="login">Logout</a></li>
+                                        </ul>
+                                </div>
+			</div>
+		</div>
+		<div class="container-fluid">
+			 
+			<div class="col-12" id="banner2">
+				<div id="overlay" class="col-12-md"style="display:flex;">
+
+                                <div class="col-6"style="height:75vh;background-color:rgba(0,0,0,0.6);margin-left:2vw;margin-top:-10vh;font-family:Ubuntu;color:white;padding:5%">
+                                {% block header %}
+                                        <h2 style="font-family:Amita;color:orange">Profile Details</h2>
+                                {% endblock header %}
+
+                                        {% block content%}
+                                
+                                               
+                                        
+                                                <div id="batch1">
+                                                        
+                                                        <p><label>First name :</label><span>  {{data.fo_fname}}</span></p>
+                                                        <p><label>Surname :</label><span>  {{data.fo_surname}}</span></p>
+                                                        <p><label>Other names :</label><span>  {{data.fo_lname}}</span></p>
+                                                        <p><label>Phone Number :</label><span>  {{data.fo_phone}}</span></p>
+                                                        <p><label>Email :</label><span>  {{data.fo_email}}</span></p>
+                                                        <button type="button" id="next1">Next</button>
+                                                </div>
+                                                <div id="batch2">
+                                                        <p><label>Gender : </label><span>  {{data.fo_gender}}</span></p>
+                                                        <p><label>State : </label><span>  {{v.state_name}}</span></p>
+                                                        <p><label>Lga : </label><span>  {{data.fo_lga}}</span></p>
+                                                        <p><label>Village : </label><span>  {{data.fo_village}}</span></p>
+                                                        <p><label>Academic qualification : </label><span>  {{data.fo_cert}}</span></p>
+                                                        <button type="button" id="previous1">Previous</button>
+                                                        <button type="button"id="next2">Next</button>
+                                                </div>
+                                                <div id="batch3">
+                                                        <p><label>Home Address :</label><span>  {{data.fo_address}}</span></p>
+                                                        <p><label>Guarantor's name :</label><span>  {{data.fo_guaname}}</span></p>
+                                                        <p><label>Guarantor's phone :</label><span>  {{data.fo_guaphone}}</span></p>
+                                                        <p><label>Gaurntor's address:</label><span>  {{data.fo_guaaddress}}</span></p>
+                                                        <button type="button" id="previous2">Previous</button>
+                                                        
+                                                </div>
+                                                 
+                                
+                                        {% endblock%}
+                                        {%for i in m%}
+                                        <p style="color:orange">{{i}}</p>
+                                        {%endfor%}
+                                        </div>
+                                        
+                                        <div class="col-md"style="">
+                                                
+                                                <img src="/static/uploads/{{data.fo_pic}}" class="img-fluid"height="300vh"width=300vw style="border-radius:50%;margin-left:1vw">
+                                                
+                                        
+                                        </div>
+                                       
+                                        
+			         </div>
+                        </div>
+
+		</div>
+
+ 
+                <div class="container-fluid">
+                        <div class="row">
+                                <div id="overlay_brands" class= "col-lg mt-4"style="text-align:center;background-color:black;margin-top:10vh">
+                                        <h2 style="color:white;margin-top:10vh">Contact</h2>
+
+                                        <div id="trademark" style="color:white">
+                                                <p>Ager is a product of Unekwuojo Theophilus Shaibu </p>
+                                                <p>No 35, ketu Ikosi , Lagos, Nigeria.</p>
+                                                
+                                        </div>
+                                        <div id="contact"style="color:white">
+                                                <p> &copy; 2022 Copyrights</p>
+                                                <p>In partnership with Smashit. www.smashit.com.ng</p>
+                                        </div>
+                                        <ul>
+                                                <li><a href="https://www.linkedin.com/in/unekwuojo-shaibu-4148b01ba/"target="_blank">
+                                                        <img class="animate__animated animate__pulse animate__repeat-3 " 
+                                                        src="/static/images/linkedin.png"height="80vh" width="80vw"></a></li>
+                                                <li><a href="https://web.facebook.com/ProfessorTheophilus" target="_blank">
+                                                        <img class="animate__animated animate__pulse animate__repeat-3 " 
+                                                        src="/static/images/facebook.png"height="80vh" width="80vw"color="blue"></a></li>
+                                                <li><a href="https://www.instagram.com/teeyo_360/" target="_blank"><img 
+                                                       class="animate__animated animate__pulse animate__repeat-3 " 
+                                                    src="/static/images/insta.png"height="80vh" width="80vw"></a></li>
+                                                <li><a href="https://twitter.com/teeyo360" target="_blank"><img 
+                                                        class="animate__animated animate__pulse animate__repeat-3 " 
+                                                        src="/static/images/twitter.png"height="80vh" width="80vw"></a></li>
+                                                <li><a href="https://wa.link/hi74nq" target="_blank"><img 
+                                                             class="animate__animated animate__pulse animate__repeat-3 "
+                                                        src="/static/images/whatsapp1.png"height="80vh" width="80vw"></a></li>
+                                        </ul>	
+                                </div>
+                        
+                        </div>
+                </div>
+        </div>
+
+                        
+                        </div>
+                </div>
+	<script src="/static/jquery/jquery.min.js"></script>
+	<script type="text/javascript" language="javascript" >
+                                        
+                                                $('#batch1').show()
+						$('#batch2').hide()
+                                                $('#batch3').hide()
+						$('#next1').click(function(){
+									$('#batch2').show(500)
+									$('#batch1').hide(500)
+									  })
+						$('#next2').click(function(){
+									$('#batch2').hide(500)
+									$('#batch3').show(500)	
+							           	  })
+						$('#previous2').click(function(){
+									$('#batch3').hide(500)
+									$('#batch2').show(500)
+
+									})
+						$('#previous1').click(function(){
+									$('#batch2').hide(500)
+									$('#batch1').show(500)
+									})
+                                                 
+$(document).ready(function(){
+    $('#stat').change(function(){
+            var selected = $(this).val()
+            var data2send = {'statee':selected}
+            
+            $.ajax({
+                    url:"{{url_for('getlga')}}",
+                    type:'get',
+                    data:data2send,
+                    dataType:'text',
+                    success:function(msg){$('#lga').html(msg)},
+                    error:function(err){ console.log(err)}
+                    // beforeSend(){ $('button').html('please wait')}
+            })
+    
+
+     
+    })
+})
+</script>
+</body>
+</html>
+

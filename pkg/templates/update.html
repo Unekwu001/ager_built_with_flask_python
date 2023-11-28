@@ -1,0 +1,56 @@
+{% extends "profile.html"%}
+
+{% block header%}
+ <h2 style="font-family:Amita;margin-top:-8vh;margin-left:10vw;color:orange">Update Details</h2>
+{% endblock header%}
+
+
+{% block content %}
+
+		<form method="post" class="form-control-md"action="{{url_for('update_settings')}}"style="margin-top:2vh;background-color:rgba(0,0,0,0.1)" enctype="multipart/form-data">
+			<div id="batch1" class="col-md">
+                                  <label>First name </label><input class="form-control" type="text" value="{{data.fo_fname}}"name="fname">
+                                  <label>Surname </label><input class="form-control" type="text" value="{{data.fo_surname}}" name="surname">
+                                  <label>Other names </label><input class="form-control" type="text" value="{{data.fo_lname}}" name="lname">
+                                  <label>Phone Number </label><input class="form-control" type="text" value="{{data.fo_phone}}" name="phone">
+                                  <label>Email </label><br><input class="form-control" type="text"  value="{{data.fo_email}}" name="email">
+                                  <button type="button" id="next1" >Next</button>
+                        </div>
+                        <div id="batch2">
+                                  <label>Gender</label>
+                                  <select class="form-control" type="text"   name="gender">
+                                    <option value="{{data.fo_gender}}">select gender</option>
+                                    <option value="male">Male</option>
+                                    <option value="female">Female</option>
+                                  </select>
+                                  <label>State </label>
+                                  <select class="form-control"  name="state" id="stat">
+
+                                        <option value="{{data.state_name}}">Select a state</option>
+                                        {%for s in states%}
+                                        <option value="{{s.state_id}}">{{s.state_name}}</option>
+                                        {%endfor%}
+
+                                  </select>
+
+                                  <label>Lga </label>
+                                  <select class="form-control"   name="lga" id="lga">
+
+                                  </select>
+                                  <label>Village </label><input class="form-control" type="text" value="{{data.fo_village}}" name="village">
+                                  <label>Academic qualification :<input class="form-control" type="text"value="{{data.fo_cert}}" name="cert">
+                                  <button type="button" id="previous1">Previous</button>
+                                  <button type="button"id="next2">Next</button>
+                        </div> 
+                        <div id="batch3">
+                                  <label>Home Address </label><input class="form-control" type="text"value="{{data.fo_address}}"name="address">
+                                  <label>Guarantor's name </label><input class="form-control" type="text"value="{{data.fo_guaname}}"name="guaname">
+                                  <label> Guarantor's phone </label><input class="form-control" type="text"value="{{data.fo_guaphone}}"name="guaphone">
+                                  <label>guarantor's address </label><input class="form-control" type="text"value="{{data.fo_guaaddress}}"name="guaaddress">
+                                  <label>picture</label><input type="file" name="pix" class="form-control" value="C:/fakepath/static/uploads/{{data.fo_pic}}">
+                                  <button type="button" id="previous2">Previous</button>
+                                  <button type="submit" style="border-color:greenyellow">Update profile</button>                          
+                        </div>
+                                                
+            </form>			
+{% endblock %}

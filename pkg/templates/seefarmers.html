@@ -1,0 +1,42 @@
+{% extends 'fo_dashboard.html' %}
+
+{% block content %}
+<div class="col-md-12 mt-4" id="myfarmers">
+    <ul>
+        <li><input type="search" name="searchfarmer"placeholder="find farmers by..."class="form-control-sm"style="height:5vh"></li>
+        <li><input type="submit" name="getallfarmers"class="btn btn-success form-control-sm" value="Get all farmers"style="color:orange;background-color:black;border-color:orange;height:1vh;width:10vw;margin-left:1vw"></li>
+    </ul>
+</div>
+<div class="row"id="seefarmerprofile">
+    <div class="col-md-3">
+        <img src="/static/images/hadiza.png"width="250vw"height="200vh" class="img-fluid mt-4 "style="border-radius:10px;margin-left:2%">
+        <span style="background-color:black;border-color:orange;color:orange;padding:2px;border-radius:3px;margin-left:2vw">Status: Verified</span>
+    </div>
+    <div class="col-md-3 mt-4">
+        <p><b>Name:</b>  Hadiza Ibrahim hau</p>
+        <p><b>Trustgroup:</b> ager1</p>
+        <p><b>farmer id:</b>  4076</p>
+        <p><b>State:</b>  Kaduna</p>
+        <p><b>lga:</b> Ikara</p>
+    </div>
+    <div class="col-md-3 mt-4">
+        <p><b>Village/ward:</b>  Saulawa</p>
+        <p><b>farm size:</b> 2ha</p>
+        <p><b>Repayment to be made:</b> 20 bags of Maize</p>
+        <p><b>Repayment status:</b> Pending</p>
+
+        
+
+    </div>
+    <div class="col-md-3 mt-4">
+        <a href="#"class="btn btn-success mb-3">Check Total inputs collected</a><br>
+        <a href="#"><span style="margin-right:10px"class="badge bg-warning rounded-pill"> Harvest Advance Status: pending
+        </span></a>
+        <!--<p>2 bags of DAP</p>
+        <p>2 bags of Urea</p>
+        <p>2 perfect killer</p>
+        <p1 >1 bag of seed </p>-->  
+        
+    </div>
+</div>
+{% endblock content%}
